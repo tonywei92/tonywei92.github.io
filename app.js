@@ -12,7 +12,7 @@ function setTypeAhead(data){
 	var airports = new Bloodhound({
 	  datumTokenizer: Bloodhound.tokenizers.obj.whitespace('airport_name','location_name', 'country_name'),
 	  queryTokenizer: Bloodhound.tokenizers.whitespace,
-	  prefetch: {url: 'api.php?method=getAirports',
+	  prefetch: {url: './airports.json',
 	 			cache: false}
 	});
 	airports.initialize();
