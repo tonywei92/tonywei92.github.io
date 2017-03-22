@@ -1,0 +1,95 @@
+<html>
+<head>
+	<title>TiketDemo</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script src="bootstrap-datepicker.min.js"></script>
+	<link rel="stylesheet" href="bootstrap-datepicker3.standalone.min.css">
+	<script src="typeahead.bundle.min.js"></script>
+	<link rel="stylesheet" href="examples.css">
+	<script src="app.js"></script>
+	<style type="text/css">
+		.tt-dropdown-menu {
+			background-color: #fff;
+			border: 1px solid #000;
+		}
+
+		.tt-suggestion.tt-cursor {
+			background-color: #ccc;
+		}
+
+		.triggered-events {
+			float: right;
+			width: 500px;
+			height: 300px;
+		}
+
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-12">
+				<h1 class="text-center"><span class="glyphicon glyphicon-plane" aria-hidden="true"></span>YouFlight</h1>
+				<form action="flight-search.php" method="get">
+					<div class="form-group text-center">
+						<label for="dep_l">Keberangkatan*</label>
+						<div id="remote_dep">
+							<input class="typeahead form-control" id="dep_l" type="text" placeholder="Keberangkatan">
+						</div>
+					</div>
+					<input type="text" id="dep" name="dep" value="" class="hidden" required="true"> 
+
+					<div class="form-group text-center">
+						<label for="arr_l">Kedatangan*</label>
+						<div id="remote_arr">
+							<input class="typeahead form-control" type="text" placeholder="Kedatangan" id="arr_l">
+						</div>
+					</div>
+					
+					<input type="text" id="arr" name="arr" value="" class="hidden" required="true"> 
+					<div class="checkbox">
+						<label>
+							<input type="checkbox" name="return" value="true" checked="true"> Pulang
+						</label>
+					</div>
+					<div class="form-group">
+						<div class="input-daterange input-group" id="datepicker">
+							<span class="input-group-addon">Pergi*</span>
+							<input type="text" class="input-sm form-control" name="start" />
+							<span class="input-group-addon">Pulang</span>
+							<input type="text" class="input-sm form-control" name="return" />
+						</div>
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading">Penumpang</div>
+						<div class="panel-body">
+							<div class="form-group">
+								<label for="adult">Dewasa*</label>
+								<input type="number" class="form-control" id="adult" name="adult" min=0 max=100 required="true">
+							</div>
+							<div class="form-group">
+								<label for="child">Anak-anak</label>
+								<input type="number" class="form-control" id="child" name="child" min=0 max=100>
+							</div>
+							<div class="form-group">
+								<label for="infant">Infant</label>
+								<input type="number" class="form-control" id="infant" name="infant" min=0 max=100>
+							</div>
+						</div>
+					</div>
+					<div class="text-center">
+						<input type="submit" class="btn btn-primary btn-lg" value="Cari">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
