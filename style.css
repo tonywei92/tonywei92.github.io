@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css?family=Bungee+Hairline|Rationale');
+
+html,body{
+  background-color: #222;
+  color: white;
+  height:100%;
+  font-family: Rationale, sans-serif;
+}
+
+.container{
+  display:flex;
+  height:100%;
+  justify-content:center;
+  align-items:center;
+  flex-direction: column;
+}
+
+a{
+  color:white;
+  text-decoration:none;
+}
+
+.btn{
+  border:1px solid #fff;
+  padding: 5px;
+  transition: all 0.4s;
+  transform: translateY(8px);
+  
+}
+
+.btn:hover{
+  background-color: #2EE59D;
+  box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+  color: #fff;
+  transform: translateY(4px);
+}
+
+.title{
+  font-family: "Bungee Hairline", cursive;
+  margin:0;
+  font-size: 1.6rem;
+}
+
+@media screen and (min-width: 768px) {
+  .title{
+    font-size: 3rem;
+  }
+}
+
+.subtitle{
+  letter-spacing: 0.1rem;
+  margin-top:0;
+}
+
+@media screen and (min-width: 768px) {
+  .subtitle{
+    letter-spacing: 0.2rem;
+    transform: translateY(-16px);
+  }
+}
