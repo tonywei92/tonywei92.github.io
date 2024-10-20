@@ -5,6 +5,7 @@ import { Menu, X } from "lucide-react";
 import { ButtonToggleDarkMode } from "@/components/ui/button-toggle-dark-mode";
 import { Logo } from "@/components/ui/logo";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 interface Props {
   className?: string;
@@ -23,9 +24,10 @@ export function Navbar({ className }: Props) {
           )}
         >
           <nav className="flex justify-between space-x-6">
-            <a href="/">Home</a>
-            <a href="/">Blog</a>
-            <a href="/">Contact</a>
+            <Link href="/">Home</Link>
+            <Link href="/blog">Blog</Link>
+            <Link href="/about-me">About Me</Link>
+            <Link href="/contact">Contact</Link>
           </nav>
           <div className="pl-24 flex items-center">
             <button onClick={() => setIsOpen(!isOpen)}>
@@ -40,8 +42,12 @@ export function Navbar({ className }: Props) {
               isOpen ? "left-[-100%]" : "left-0"
             )}
           >
-            <Logo className="dark:fill-white w-5 h-5" />
-            <div className="dark:text-white">Tony Song</div>
+            <Link href="/">
+              <Logo className="dark:fill-white w-5 h-5" />
+            </Link>
+            <Link href="/" className="dark:text-white">
+              Tony Song
+            </Link>
           </div>
           <div
             className={cn(

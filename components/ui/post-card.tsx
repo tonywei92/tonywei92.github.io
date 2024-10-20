@@ -7,17 +7,33 @@ interface Props {
   className?: string;
   date: string;
   tags: string[];
+  compact?: boolean;
 }
 
-export function PostCard({ title, href, className, date, tags }: Props) {
+export function PostCard({
+  title,
+  href,
+  className,
+  date,
+  tags,
+  compact,
+}: Props) {
+  if (compact) {
+    console.log("test");
+  } else {
+    console.log("not compact");
+  }
   return (
     <div
       className={cn(
-        "flex flex-col md:flex-row justify-between md:space-x-4 space-y-2 md:space-y-0",
+        "flex justify-between space-y-2",
+        compact ? "flex-col" : "flex-row md:flex-row md:space-x-4 md:space-y-0",
         className
       )}
     >
-      <div className="text-sm text-zinc-500 pr-16">{formatDate(date)}</div>
+      <div className="text-sm text-zinc-500 pr-16 font-semibold">
+        {formatDate(date)}
+      </div>
       <div className="flex-1">
         <h3 className="text-lg font-bold mb-2">{title}</h3>
         <div className="flex space-x-2 text-xs font-bold uppercase text-indigo-500 font-mono mb-4">

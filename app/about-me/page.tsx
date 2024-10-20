@@ -3,7 +3,7 @@ export default function AboutMe() {
   return (
     <div className="py-24 flex items-center justify-center px-6">
       <div className="max-w-2xl w-full">
-        <h2 className="text-2xl font-bold mb-4 text-center">About Me.</h2>
+        <h2 className="text-2xl font-bold mb-16 text-center">About Me.</h2>
         <div className="flex flex-col md:flex-row md:space-x-4">
           <div className="flex justify-center mb-4">
             <div>
@@ -14,7 +14,7 @@ export default function AboutMe() {
               />
             </div>
           </div>
-          <div className="space-y-6 text-zinc-400">
+          <div className="space-y-6 text-zinc-700 dark:text-zinc-400">
             <p>
               Hi there! I'm{" "}
               <span className="font-semibold">Tony Soekirman</span> but I
@@ -41,7 +41,7 @@ export default function AboutMe() {
             <div>
               <h4
                 id="my-current-focus"
-                className="font-semibold text-zinc-300 mb-2"
+                className="font-semibold text-zinc-800 dark:text-zinc-300 mb-2"
               >
                 My Current Focus
               </h4>
@@ -58,7 +58,7 @@ export default function AboutMe() {
             <div>
               <h4
                 id="my-expertise"
-                className="font-semibold text-zinc-300 mb-2"
+                className="font-semibold text-zinc-800 dark:text-zinc-300 mb-2"
               >
                 My Expertise
               </h4>
@@ -98,7 +98,7 @@ export default function AboutMe() {
             <div>
               <h4
                 id="achievements"
-                className="font-semibold text-zinc-300 mb-2"
+                className="font-semibold text-zinc-800 dark:text-zinc-300 mb-2"
               >
                 Achievements
               </h4>
@@ -109,9 +109,9 @@ export default function AboutMe() {
                   with Prometheus and Grafana.
                 </li>
                 <li>
-                  Created <strong>cpumon</strong>, a cross-platform CPU
-                  monitoring tool built in Golang, optimized for multiple
-                  architectures including Windows, Linux, and Mac.
+                  Created <code>cpumon</code> & <code>memmon</code>, a
+                  cross-platform node monitoring tool built in Golang, optimized
+                  for multiple architectures including Windows, Linux, and Mac.
                 </li>
                 <li>
                   Served as CTO at <strong>MetaPals</strong>, where I
@@ -123,7 +123,7 @@ export default function AboutMe() {
             <div>
               <h4
                 id="what-i-m-passionate-about"
-                className="font-semibold text-zinc-300 mb-2"
+                className="font-semibold text-zinc-800 dark:text-zinc-300 mb-2"
               >
                 What I'm Passionate About
               </h4>
@@ -139,7 +139,7 @@ export default function AboutMe() {
             <div>
               <h4
                 id="let-s-connect"
-                className="font-semibold text-zinc-300 mb-2"
+                className="font-semibold text-zinc-800 dark:text-zinc-300 mb-2"
               >
                 Let's Connect
               </h4>
