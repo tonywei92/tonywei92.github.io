@@ -1,26 +1,38 @@
 import { PostCard } from "@/components/ui/post-card";
+import { getPosts, getTags } from "@/lib/sanity";
+import Link from "next/link";
 
-export default function Blog() {
+export default async function Blog() {
+  const posts: any[] = await getPosts(true);
+  const tags: any[] = await getTags();
   return (
-    <div className="py-24 flex items-center justify-center px-6">
+    <div className="pt-24 md:pt-32 pb-12 flex items-center justify-center px-6">
       <div className="max-w-2xl w-full">
-        <h2 className="text-2xl font-bold mb-16 text-center">Blog.</h2>
-        <div className="flex space-x-6">
-          <div className="w-[16rem] hidden md:block">
-            <div className="dark:bg-zinc-900 bg-zinc-100 p-4">
-              <div className="font-bold text-indigo-500">ALL POSTS</div>
+        <div className="flex md:space-x-8">
+          <div className="w-[14rem] hidden md:block">
+            <div className="dark:bg-zinc-900 bg-zinc-100 p-4 rounded">
+              <div className="font-bold text-indigo-500 mb-4">Tags</div>
+              <ol className="text-xs font-semibold text-slate-500 space-y-2">
+                {tags.map((tag) => (
+                  <li key={tag._id}>
+                    <Link href={`/blog/tags/${tag.slug.current}`}>
+                      # {tag.slug.current}
+                    </Link>
+                  </li>
+                ))}
+              </ol>
             </div>
           </div>
-          <div className="flex-1 divide-y divide-zinc-800">
-            {Array.from({ length: 5 }).map((_, index) => (
+          <div className="flex-1 divide-y divide-zinc-200 dark:divide-zinc-800">
+            {posts.map((post) => (
               <PostCard
                 compact
-                key={index}
+                key={post._id}
                 className="py-6"
-                title="Post Title"
-                date="2024-10-19"
-                tags={["Technology", "DevOps"]}
-                href="/"
+                title={post.title}
+                date={post.createdAt}
+                tags={post.tags.map((tag: any) => tag.slug.current)}
+                href={`/blog/${post.slug.current}`}
               />
             ))}
           </div>

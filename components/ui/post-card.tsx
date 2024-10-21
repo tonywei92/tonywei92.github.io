@@ -1,5 +1,6 @@
 import { MoveRight } from "lucide-react";
 import { cn, formatDate } from "@/lib/utils";
+import Link from "next/link";
 
 interface Props {
   title: string;
@@ -18,11 +19,6 @@ export function PostCard({
   tags,
   compact,
 }: Props) {
-  if (compact) {
-    console.log("test");
-  } else {
-    console.log("not compact");
-  }
   return (
     <div
       className={cn(
@@ -31,22 +27,26 @@ export function PostCard({
         className
       )}
     >
-      <div className="text-sm text-zinc-500 pr-16 font-semibold">
+      <div className="text-sm text-zinc-500 font-semibold w-[10rem]">
         {formatDate(date)}
       </div>
       <div className="flex-1">
-        <h3 className="text-lg font-bold mb-2">{title}</h3>
-        <div className="flex space-x-2 text-xs font-bold uppercase text-indigo-500 font-mono mb-4">
+        <Link href={href} className="text-lg font-bold mb-2 block">
+          {title}
+        </Link>
+        <div className="text-xs font-bold uppercase text-indigo-500 font-mono mb-4 leading-relaxed">
           {tags.map((tag) => (
-            <div key={tag}>{tag}</div>
+            <Link key={tag} href={`/blog/tags/${tag}`}>
+              <span>#{tag}</span>{" "}
+            </Link>
           ))}
         </div>
-        <a
+        <Link
           href={href}
           className="text-xs text-indigo-500 font-bold inline-flex items-center space-x-2"
         >
           <span>Read more</span> <MoveRight className="w-4 h-4" />
-        </a>
+        </Link>
       </div>
     </div>
   );
