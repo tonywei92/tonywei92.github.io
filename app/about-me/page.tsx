@@ -3,6 +3,7 @@ import tonysongImg from "@/assets/tony-portrait-circle.png";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_URL!),
   title: "About Me | Tony Song",
   description:
     "Learn more about Tony Song, a full-stack developer and technical leader.",

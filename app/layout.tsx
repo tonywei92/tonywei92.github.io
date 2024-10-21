@@ -23,6 +23,7 @@ const roboto_mono = Roboto_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_URL!),
   title: "Tech Insights by Tony Song | AI, Cloud, and Development Tips",
   description:
     "Stay ahead in the tech world with insights on AI, Kubernetes, and web development best practices.",
