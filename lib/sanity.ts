@@ -1,6 +1,7 @@
 // sanity.js
 import { createClient } from "@sanity/client";
 import imageUrlBuilder from "@sanity/image-url";
+import { Post, Tag } from "./sanity-type";
 // Import using ESM URL imports in environments that supports it:
 // import {createClient} from 'https://esm.sh/@sanity/client'
 
@@ -34,12 +35,12 @@ export async function getPosts(preview?: boolean, limit?: number) {
         description,
         createdAt
       } | order(createdAt desc) ${limit ? `[0..${limit}]` : ""}`;
-  const posts = await client.fetch(query);
+  const posts: Post[] = await client.fetch(query);
   return posts;
 }
 
 export async function getPostBySlug(slug: string) {
-  const post = await client.fetch(
+  const post: Post = await client.fetch(
     `*[_type == "post" && slug.current == "${slug}"][0]{
         _id,
         title,
@@ -55,7 +56,7 @@ export async function getPostBySlug(slug: string) {
 }
 
 export async function getPostsByTag(tag: string) {
-  const posts =
+  const posts: Post[] =
     await client.fetch(`*[_type == "post" && "${tag}" in tags[]->slug.current]{
         _id,
         title,
@@ -68,6 +69,6 @@ export async function getPostsByTag(tag: string) {
 }
 
 export async function getTags() {
-  const tags = await client.fetch(`*[_type == "tag"]`);
+  const tags: Tag[] = await client.fetch(`*[_type == "tag"]`);
   return tags;
 }

@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { PostCard } from "@/components/ui/post-card";
 import Link from "next/link";
@@ -19,7 +18,7 @@ export default async function Home() {
               viewport={{ once: true }}
             >
               <h1 className="text-4xl font-bold pb-4">
-                Hey There! Let's Connect.
+                Hey There! Let&apos;s Connect.
               </h1>
             </MotionFramerWrapper>
             <MotionFramerWrapper
@@ -29,7 +28,7 @@ export default async function Home() {
               viewport={{ once: true }}
             >
               <p className="text-zinc-500 font-medium pb-8">
-                I'm Tony Song. I dedicated myself as Software Engineer and
+                I&apos;m Tony Song. I dedicated myself as Software Engineer and
                 technical leader, driving the creation of exceptional products
                 and sharing my learnings.
               </p>
@@ -64,7 +63,7 @@ export default async function Home() {
             </h2>
 
             <div className="divide-y divide-zinc-200 dark:divide-zinc-800">
-              {posts.map((post: any, i: number) => (
+              {posts.map((post) => (
                 <MotionFramerWrapper
                   key={post._id}
                   initial={{ opacity: 0 }}
@@ -74,10 +73,10 @@ export default async function Home() {
                 >
                   <PostCard
                     className="py-6"
-                    title={post.title}
-                    date={post.createdAt}
-                    tags={post.tags.map((tag: any) => tag.slug.current)}
-                    href={`/blog/${post.slug.current}`}
+                    title={post.title!}
+                    date={post.createdAt!}
+                    tags={post.tags!.map((tag) => tag.slug!.current!)}
+                    href={`/blog/${post.slug!.current}`}
                   />
                 </MotionFramerWrapper>
               ))}

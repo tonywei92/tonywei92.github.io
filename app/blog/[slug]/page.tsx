@@ -23,14 +23,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: `${post.title} | Tech Insights by Tony Song`,
     description: post.description,
     openGraph: {
-      images: [imageBuilder.image(post.mainImage).url()],
+      images: [imageBuilder.image(post.mainImage!).url()],
     },
   };
 }
 
 export async function generateStaticParams() {
   const posts = await getPosts(true);
-  return posts.map((post: any) => ({ slug: post.slug.current }));
+  return posts.map((post) => ({ slug: post.slug!.current! }));
 }
 
 interface CodeProps {
@@ -112,23 +112,23 @@ export default async function Post({ params }: { params: { slug: string } }) {
             {formatDate(post._createdAt)}
           </div>
           <div className="flex flex-wrap gap-2 mb-8">
-            {post.tags.map((tag: any) => (
+            {post.tags!.map((tag) => (
               <Link
-                href={`/blog/tags/${tag.slug.current}`}
+                href={`/blog/tags/${tag.slug!.current}`}
                 key={tag._id}
                 className="text-xs font-bold uppercase text-indigo-500 font-mono mb-4 leading-relaxed"
               >
-                #{tag.slug.current}
+                #{tag.slug!.current}
               </Link>
             ))}
           </div>
           <img
-            src={imageBuilder.image(post.mainImage).url()}
+            src={imageBuilder.image(post.mainImage!).url()}
             alt={post.title}
             className="rounded-lg mb-8"
           />
           <div className="prose dark:prose-invert mb-16">
-            <PortableText value={post.body} components={components} />
+            <PortableText value={post.body!} components={components} />
           </div>
           <div className="flex justify-center">
             <Button variant="default" className="w-48" asChild>

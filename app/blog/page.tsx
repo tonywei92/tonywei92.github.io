@@ -3,8 +3,8 @@ import { getPosts, getTags } from "@/lib/sanity";
 import Link from "next/link";
 
 export default async function Blog() {
-  const posts: any[] = await getPosts(true);
-  const tags: any[] = await getTags();
+  const posts = await getPosts(true);
+  const tags = await getTags();
   return (
     <div className="pt-24 md:pt-32 pb-12 flex items-center justify-center px-6">
       <div className="max-w-2xl w-full">
@@ -15,8 +15,8 @@ export default async function Blog() {
               <ol className="text-xs font-semibold text-slate-500 space-y-2">
                 {tags.map((tag) => (
                   <li key={tag._id}>
-                    <Link href={`/blog/tags/${tag.slug.current}`}>
-                      # {tag.slug.current}
+                    <Link href={`/blog/tags/${tag.slug!.current}`}>
+                      # {tag.slug!.current}
                     </Link>
                   </li>
                 ))}
@@ -29,10 +29,10 @@ export default async function Blog() {
                 compact
                 key={post._id}
                 className="py-6"
-                title={post.title}
-                date={post.createdAt}
-                tags={post.tags.map((tag: any) => tag.slug.current)}
-                href={`/blog/${post.slug.current}`}
+                title={post.title!}
+                date={post.createdAt!}
+                tags={post.tags!.map((tag) => tag.slug!.current!)}
+                href={`/blog/${post.slug!.current}`}
               />
             ))}
           </div>

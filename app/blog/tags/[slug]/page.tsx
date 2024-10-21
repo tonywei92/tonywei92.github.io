@@ -1,12 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { PostCard } from "@/components/ui/post-card";
-import { getPostsByTag, getTags, imageBuilder } from "@/lib/sanity";
+import { getPostsByTag, getTags } from "@/lib/sanity";
 import Link from "next/link";
-import { Metadata } from "next";
 
 export async function generateStaticParams() {
   const tags = await getTags();
-  return tags.map((tag: any) => ({ slug: tag.slug.current }));
+  return tags.map((tag) => ({ slug: tag.slug!.current }));
 }
 
 export default async function Post({ params }: { params: { slug: string } }) {
@@ -18,14 +17,14 @@ export default async function Post({ params }: { params: { slug: string } }) {
           <span className="font-mono">#{params.slug}</span>
         </h1>
         <div className="divide-y divide-zinc-200 dark:divide-zinc-800">
-          {postsByTag.map((post: any) => (
+          {postsByTag.map((post) => (
             <PostCard
               className="py-6"
               key={post._id}
-              title={post.title}
-              date={post.createdAt}
-              tags={post.tags.map((tag: any) => tag.slug.current)}
-              href={`/blog/${post.slug.current}`}
+              title={post.title!}
+              date={post.createdAt!}
+              tags={post.tags!.map((tag) => tag.slug!.current!)}
+              href={`/blog/${post.slug!.current}`}
             />
           ))}
         </div>
