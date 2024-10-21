@@ -50,10 +50,7 @@ export default async function Home() {
             </MotionFramerWrapper>
           </div>
         </div>
-        <div
-          className="flex justify-center px-6 delay-[300ms] duration-[600ms] taos:translate-y-[200px] taos:opacity-0"
-          data-taos-offset="300"
-        >
+        <div className="flex justify-center px-6">
           <div className="max-w-2xl w-full">
             <h2
               className="text-2xl font-bold mb-6 scroll-mt-24"
